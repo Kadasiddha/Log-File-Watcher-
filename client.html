@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Live Log Viewer</title>
+</head>
+<body>
+  <h2>Live Log Output</h2>
+  <pre id="log"></pre>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+    const logEl = document.getElementById('log');
+
+    socket.on('log_update', (data) => {
+      logEl.textContent += data;
+    });
+  </script>
+</body>
+</html>
+
